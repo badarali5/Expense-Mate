@@ -33,10 +33,14 @@ class IntegrationBase(unittest.TestCase):
 class TestWorkflows(IntegrationBase):
     def test_IT1_add_transaction_is_stored_in_the_database(self):
         tx_id = self.controller.add_transaction("expense", "250", "groceries", "2026-09-03", "milk")
-        row = sqlite3.connect(self.path).execute(
-            "SELECT t.type, t.amount, c.name, t.date, t.description "
-            "FROM transactions t JOIN categories c ON c.id = t.category_id WHERE t.id = ?",
-            (tx_id,)).fetchone()
+        conn = sqlite3.connect(self.path)
+        try:
+            row = conn.execute(
+                "SELECT t.type, t.amount, c.name, t.date, t.description "
+                "FROM transactions t JOIN categories c ON c.id = t.category_id WHERE t.id = ?",
+                (tx_id,)).fetchone()
+        finally:
+            conn.close()
         self.assertEqual(row, ("expense", 250.0, "Groceries", "2026-09-03", "milk"))
 
     def test_IT2_budget_alert_moves_ok_warning_exceeded(self):
