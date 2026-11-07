@@ -1,0 +1,173 @@
+=== METRICS (measured 2026-11-07 with radon 6.0.1 and coverage Coverage.py, version 7.17.2) ===
+
+--- 1. Cyclomatic complexity: BEFORE (baseline_a01/src, excl. ui/main) ---
+baseline_a01/src/db.py
+    M 89:4 Database.list_transactions - A (3)
+    C 15:0 Database - A (2)
+    M 18:4 Database.__init__ - A (2)
+    M 58:4 Database.get_or_create_category - A (2)
+    M 26:4 Database._create_schema - A (1)
+    M 68:4 Database.list_categories - A (1)
+    M 73:4 Database.insert_transaction - A (1)
+    M 84:4 Database.delete_transaction - A (1)
+    M 104:4 Database.set_budget - A (1)
+    M 113:4 Database.get_budgets - A (1)
+    M 122:4 Database.close - A (1)
+baseline_a01/src/logic.py
+    M 146:4 ExpenseManager.import_csv - B (8)
+    M 29:4 ExpenseManager.add_transaction - B (7)
+    M 70:4 ExpenseManager.set_budget - B (7)
+    C 25:0 ExpenseManager - A (5)
+    M 55:4 ExpenseManager.monthly_summary - A (5)
+    M 86:4 ExpenseManager.check_budget_alerts - A (5)
+    M 111:4 ExpenseManager.add_recurring_transaction - A (4)
+    M 61:4 ExpenseManager.category_breakdown - A (3)
+    M 137:4 ExpenseManager.export_csv - A (3)
+    M 26:4 ExpenseManager.__init__ - A (2)
+    C 20:0 ValidationError - A (1)
+    M 49:4 ExpenseManager.delete_transaction - A (1)
+    M 52:4 ExpenseManager.get_transactions - A (1)
+
+24 blocks (classes, functions, methods) analyzed.
+Average complexity: A (2.8333333333333335)
+
+--- 1. Cyclomatic complexity: AFTER (src, excl. ui/main) ---
+src/database.py
+    C 18:0 Database - A (2)
+    M 21:4 Database.__init__ - A (2)
+    M 30:4 Database.schema_version - A (1)
+    M 33:4 Database.close - A (1)
+    M 36:4 Database.__enter__ - A (1)
+    M 39:4 Database.__exit__ - A (1)
+src/migrations.py
+    F 61:0 _migrate_to_v2 - A (3)
+    F 73:0 migrate - A (2)
+    F 19:0 get_schema_version - A (1)
+    F 23:0 _set_schema_version - A (1)
+    F 27:0 _migrate_to_v1 - A (1)
+src/repository.py
+    M 54:4 TransactionRepository.list - A (3)
+    C 13:0 CategoryRepository - A (2)
+    M 17:4 CategoryRepository.get_or_create - A (2)
+    C 33:0 TransactionRepository - A (2)
+    C 70:0 BudgetRepository - A (2)
+    M 14:4 CategoryRepository.__init__ - A (1)
+    M 27:4 CategoryRepository.list_all - A (1)
+    M 34:4 TransactionRepository.__init__ - A (1)
+    M 37:4 TransactionRepository.insert - A (1)
+    M 49:4 TransactionRepository.delete - A (1)
+    M 71:4 BudgetRepository.__init__ - A (1)
+    M 74:4 BudgetRepository.upsert - A (1)
+    M 83:4 BudgetRepository.list_for_month - A (1)
+src/services.py
+    M 169:4 CsvService._header_map - B (6)
+    M 42:4 TransactionService.add_transaction - A (5)
+    M 92:4 SummaryService.monthly_summary - A (5)
+    M 114:4 BudgetService.set_budget - A (5)
+    M 67:4 TransactionService.add_recurring_transaction - A (4)
+    C 88:0 SummaryService - A (4)
+    C 107:0 BudgetService - A (4)
+    M 130:4 BudgetService.status_for - A (4)
+    C 153:0 CsvService - A (4)
+    F 31:0 _clean_category - A (3)
+    C 37:0 TransactionService - A (3)
+    M 98:4 SummaryService.category_breakdown - A (3)
+    M 159:4 CsvService.export_csv - A (3)
+    M 192:4 CsvService.import_csv - A (3)
+    M 139:4 BudgetService.check_budget_alerts - A (2)
+    C 26:0 ValidationError - A (1)
+    M 38:4 TransactionService.__init__ - A (1)
+    M 61:4 TransactionService.delete_transaction - A (1)
+    M 64:4 TransactionService.get_transactions - A (1)
+    M 89:4 SummaryService.__init__ - A (1)
+    M 108:4 BudgetService.__init__ - A (1)
+    M 156:4 CsvService.__init__ - A (1)
+    M 179:4 CsvService._import_row - A (1)
+src/controller.py
+    F 15:0 _to_float - A (2)
+    F 22:0 _to_int - A (2)
+    C 29:0 ExpenseController - A (2)
+    M 30:4 ExpenseController.__init__ - A (1)
+    M 38:4 ExpenseController.add_transaction - A (1)
+    M 44:4 ExpenseController.add_recurring_transaction - A (1)
+    M 50:4 ExpenseController.delete_transaction - A (1)
+    M 53:4 ExpenseController.get_transactions - A (1)
+    M 57:4 ExpenseController.monthly_summary - A (1)
+    M 60:4 ExpenseController.category_breakdown - A (1)
+    M 63:4 ExpenseController.set_budget - A (1)
+    M 67:4 ExpenseController.check_budget_alerts - A (1)
+    M 71:4 ExpenseController.export_csv - A (1)
+    M 74:4 ExpenseController.import_csv - A (1)
+src/bootstrap.py
+    F 15:0 build_controller - A (2)
+
+62 blocks (classes, functions, methods) analyzed.
+Average complexity: A (1.935483870967742)
+
+--- 2. Test coverage: BEFORE (A01 tests on A01 code) ---
+Name           Stmts   Miss  Cover   Missing
+--------------------------------------------
+src/db.py         59      3    95%   69-71
+src/logic.py     119      7    94%   50, 74, 76, 79-80, 124-125
+src/main.py        4      4     0%   5-9
+src/ui.py        183    183     0%   10-254
+--------------------------------------------
+TOTAL            365    197    46%
+
+--- 2. Test coverage: AFTER (all tests on new code) ---
+Name                Stmts   Miss  Cover   Missing
+-------------------------------------------------
+src/bootstrap.py       14      0   100%
+src/controller.py      37      0   100%
+src/database.py        21      0   100%
+src/migrations.py      25      0   100%
+src/repository.py      52      0   100%
+src/services.py       139      0   100%
+-------------------------------------------------
+TOTAL                 288      0   100%
+
+--- 3. Size: logical lines of code per module ---
+baseline_a01/src/db.py
+    LLOC: 62
+baseline_a01/src/logic.py
+    LLOC: 131
+src/database.py
+    LLOC: 23
+src/migrations.py
+    LLOC: 30
+src/repository.py
+    LLOC: 54
+src/services.py
+    LLOC: 150
+src/controller.py
+    LLOC: 38
+src/bootstrap.py
+    LLOC: 15
+
+--- 4. Public methods per class: BEFORE (counted with ast, excludes names starting with _) ---
+Database                8  ['get_or_create_category', 'list_categories', 'insert_transaction', 'delete_transaction', 'list_transactions', 'set_budget', 'get_budgets', 'close']
+ExpenseManager         10  ['add_transaction', 'delete_transaction', 'get_transactions', 'monthly_summary', 'category_breakdown', 'set_budget', 'check_budget_alerts', 'add_recurring_transaction', 'export_csv', 'import_csv']
+
+--- 4. Public methods per class: AFTER (counted with ast, excludes names starting with _) ---
+Database                2  ['schema_version', 'close']
+CategoryRepository      2  ['get_or_create', 'list_all']
+TransactionRepository   3  ['insert', 'delete', 'list']
+BudgetRepository        2  ['upsert', 'list_for_month']
+TransactionService      4  ['add_transaction', 'delete_transaction', 'get_transactions', 'add_recurring_transaction']
+SummaryService          2  ['monthly_summary', 'category_breakdown']
+BudgetService           3  ['set_budget', 'status_for', 'check_budget_alerts']
+CsvService              2  ['export_csv', 'import_csv']
+ExpenseController      10  ['add_transaction', 'add_recurring_transaction', 'delete_transaction', 'get_transactions', 'monthly_summary', 'category_breakdown', 'set_budget', 'check_budget_alerts', 'export_csv', 'import_csv']
+
+--- 2b. Coverage AFTER, now including migrate_db.py (only ui.py and main.py excluded: Tkinter cannot run here) ---
+Name                Stmts   Miss  Cover   Missing
+-------------------------------------------------
+src/bootstrap.py       14      0   100%
+src/controller.py      37      0   100%
+src/database.py        21      0   100%
+src/migrate_db.py      41     12    71%   53-63, 67
+src/migrations.py      25      0   100%
+src/repository.py      52      0   100%
+src/services.py       139      0   100%
+-------------------------------------------------
+TOTAL                 329     12    96%

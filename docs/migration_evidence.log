@@ -1,0 +1,25 @@
+$ sqlite3 legacy: PRAGMA user_version; columns of transactions (BEFORE)
+user_version = 0
+columns = ['id', 'type', 'amount', 'category_id', 'date', 'description']
+
+$ python src/migrate_db.py /tmp/mig/expensemate.db
+Schema version: v0 -> v2
+Migrations applied: [1, 2]
+Backup: /tmp/mig/expensemate.db.bak-v0
+Transactions before: 4 | after: 4
+Record check: OK - original columns unchanged
+
+$ (run again - repeatable)
+Schema version: v2 -> v2
+Migrations applied: none (already up to date)
+Backup: not needed
+Transactions before: 4 | after: 4
+Record check: OK - original columns unchanged
+
+AFTER:
+user_version = 2
+columns = ['id', 'type', 'amount', 'category_id', 'date', 'description', 'created_at']
+(1, 'income', 50000.0, '2026-09-01', 'September salary', '2026-09-01')
+(2, 'expense', 3500.0, '2026-09-02', 'Groceries', '2026-09-02')
+(3, 'expense', 4500.0, '2026-09-07', 'Electricity bill', '2026-09-07')
+(4, 'expense', 15000.0, '2026-09-15', 'September rent', '2026-09-15')

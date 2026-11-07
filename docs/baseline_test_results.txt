@@ -1,0 +1,28 @@
+test_delete_transaction (test_db.TestDatabase.test_delete_transaction) ... ok
+test_get_or_create_category_is_idempotent (test_db.TestDatabase.test_get_or_create_category_is_idempotent) ... ok
+test_insert_and_list_transaction (test_db.TestDatabase.test_insert_and_list_transaction) ... ok
+test_list_transactions_filters_by_month_year (test_db.TestDatabase.test_list_transactions_filters_by_month_year) ... ok
+test_set_budget_upsert (test_db.TestDatabase.test_set_budget_upsert) ... ok
+test_transaction_rejects_invalid_type (test_db.TestDatabase.test_transaction_rejects_invalid_type) ... ok
+test_transaction_rejects_nonpositive_amount (test_db.TestDatabase.test_transaction_rejects_nonpositive_amount) ... ok
+test_add_recurring_transaction_creates_n_entries (test_logic.TestExpenseManager.test_add_recurring_transaction_creates_n_entries) ... ok
+test_add_recurring_transaction_rejects_nonpositive_months (test_logic.TestExpenseManager.test_add_recurring_transaction_rejects_nonpositive_months) ... ok
+test_add_transaction_rejects_bad_date (test_logic.TestExpenseManager.test_add_transaction_rejects_bad_date) ... ok
+test_add_transaction_rejects_bad_type (test_logic.TestExpenseManager.test_add_transaction_rejects_bad_type) ... ok
+test_add_transaction_rejects_empty_category (test_logic.TestExpenseManager.test_add_transaction_rejects_empty_category) ... ok
+test_add_transaction_rejects_negative_amount (test_logic.TestExpenseManager.test_add_transaction_rejects_negative_amount) ... ok
+test_add_transaction_rejects_nonnumeric_amount (test_logic.TestExpenseManager.test_add_transaction_rejects_nonnumeric_amount) ... ok
+test_budget_alert_statuses (test_logic.TestExpenseManager.test_budget_alert_statuses) ... ok
+test_budget_rejects_empty_category (test_logic.TestExpenseManager.test_budget_rejects_empty_category) ... ok
+test_budget_rejects_nonpositive_limit (test_logic.TestExpenseManager.test_budget_rejects_nonpositive_limit) ... ok
+test_category_normalisation_dedupes (test_logic.TestExpenseManager.test_category_normalisation_dedupes) ... ok
+test_export_then_import_round_trip (test_logic.TestExpenseManager.test_export_then_import_round_trip) ... ok
+test_import_csv_accepts_case_insensitive_headers (test_logic.TestExpenseManager.test_import_csv_accepts_case_insensitive_headers) ... ok
+test_import_csv_missing_columns_raises (test_logic.TestExpenseManager.test_import_csv_missing_columns_raises) ... ok
+test_import_csv_skips_bad_rows_and_reports_errors (test_logic.TestExpenseManager.test_import_csv_skips_bad_rows_and_reports_errors) ... ok
+test_monthly_summary (test_logic.TestExpenseManager.test_monthly_summary) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.104s
+
+OK
